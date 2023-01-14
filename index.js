@@ -73,7 +73,7 @@ mongoose.
 
 
 //setting up port
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 
 //starting server
