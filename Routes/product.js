@@ -54,6 +54,35 @@ router.post("/", verifyToken, async (req, res) => {
     }
 })
 
+//SEARCH PRODUCT
+/*
+    * route : /product/search
+    * params : none
+    * method : GET
+    * access : public
+    * desc : search product based on name
+    * query : name
+    * example : /product/search?name=apple
+*/
+
+router.get("/search/:query",verifyToken,async(req,res) => {
+    const qName = req.params.query;
+    try{
+        const products = await Product.find({
+            title:{
+                $regex:qName,
+                $options:"$i"
+                
+            }
+        });
+        res.status(200).json(products);
+    }
+    catch(err){
+        res.status(500).json(err);
+        console.log(err);
+    }
+});
+
 //GET ALL PRODUCT 
 /*
     * route : /product/
