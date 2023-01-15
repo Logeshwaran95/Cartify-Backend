@@ -83,6 +83,7 @@ router.get("/search/:query",verifyToken,async(req,res) => {
     }
 });
 
+
 //GET ALL PRODUCT 
 /*
     * route : /product/
