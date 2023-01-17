@@ -24,20 +24,8 @@ const authRoute = require('./Routes/auth');
 
 const stripeRoute = require('./Routes/stripe');
 
-//local tunnerl
-const localtunnel = require('localtunnel');
 
-(async () => {
-    const tunnel = await localtunnel({ port: 4000 });
-  
-    // the assigned public url for your tunnel
-    // i.e. https://abcdefgjhij.localtunnel.me
-    tunnel.url;
-  
-    tunnel.on('close', () => {
-      // tunnels are closed
-    });
-  })();
+
 
 
 dotenv.config();

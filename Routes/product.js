@@ -122,24 +122,44 @@ router.get("/",async(req,res) => {
  * desc : update user based on id
  */
 
-router.put("/:id",verifyToken,async (req,res) => {
+// router.put("/:id",verifyToken,async (req,res) => {
 
-    try {
-        const updatedProduct = await Product.findByIdAndUpdate(
-            req.params.id,
-            {
-            $set:req.body
-            },
-            {new:true}
-            );
-        res.status(200).json(updatedProduct);
-    }
-    catch(err){
-        res.status(500).json(err);
-        console.log(err);
-    }
+//     try {
+//         const updatedProduct = await Product.findByIdAndUpdate(req.params.id,{
+//             $set: {
+//                 rating:req.body.rating,
+//                 numReviews:req.body.numReviews,
+//             }
+//         },{new:true});
+//         res.status(200).json(updatedProduct);
+        
+//     }
+//     catch(err){
+//         res.status(500).json(err);
+//         console.log(err);
+//     }
 
-})
+// })
+
+//UPDATE REVIEWS OF PRODUCT
+
+/*
+
+ * route : /product/:id/reviews
+ * params : id
+ * method : PUT
+ * access : private
+ * desc : update reviews of product based on id
+ * body : rating,comment
+ * example : {
+ *     rating:5,    
+ *    comment:"good product"
+ * }
+ * 
+*/
+
+
+
 
 //DELETE A PRODUCT
 
