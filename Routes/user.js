@@ -81,11 +81,28 @@ router.put("/:id",verifyToken,async (req,res) => {
     }
 
     try{
-        const updatedUser = await User.findByIdAndUpdate(req.params.id,{
-            $set: req.body
-        },{new:true});
 
-        res.status(200).json(updatedUser);
+        if(req.body.userName || req.body.email){
+            
+            try{
+
+                const response = await User.findOne({$or:[{userName:req.body.userName},{email:req.body.email}]});
+                if(response._id != req.params.id){
+
+                    const updatedUser = await User.findByIdAndUpdate(req.params.id,{
+                        $set: req.body
+                    },{new:true});
+            
+                    res.status(200).json(updatedUser);
+
+                }
+
+            }
+            catch(err){
+                return res.status(403).json("Username or email already exists");
+            }
+            
+        }
     }
     catch(err){
         res.status(500).json(err);
