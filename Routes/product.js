@@ -183,7 +183,27 @@ router.delete("/:id",verifyToken,async (req,res) => {
 })
 
 
+// Route: /product/search
+// Method: POST
+// Access: Public
+// Description: Search for a product that includes any subset of strings in its categories array
 
+router.get("/suggest", async (req, res) => {
+    const { categories } = req.body;
+  
+    try {
+      const products = await Product.find({
+        categories: {
+            $in: Array.isArray(categories) ? categories : [categories], // Matches any product with at least one category that matches any element in the categories array
+          },
+      });
+  
+      res.status(200).json(products);
+      console.log(products.length)
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  });
 
 
 module.exports = router;
