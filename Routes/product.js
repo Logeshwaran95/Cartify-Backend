@@ -205,5 +205,33 @@ router.get("/suggest", async (req, res) => {
     }
   });
 
+// Route: /product/getsuggest
+// Method: GET
+// Access: Public
+// Description: gets suggest products
+
+router.get("/suggest/:key1/:key2",async(req,res) => { 
+
+    const key1 = req.params.key1;
+    const key2 = req.params.key2;
+
+    try{
+
+                const products = await Product.find({
+                    categories:{
+                        $in:[key1,key2]
+                    }
+                });
+                res.status(200).json(products);
+                console.log(products.length);
+
+    }
+    catch(err){
+        res.status(500).json(err);
+        console.log(err);
+    }
+});
+
+
 
 module.exports = router;
