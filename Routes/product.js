@@ -71,8 +71,7 @@ router.get("/search/:query",async(req,res) => {
         const products = await Product.find({
             title:{
                 $regex:qName,
-                $options:"$i"
-                
+                $options:"i"
             }
         });
         res.status(200).json(products);
