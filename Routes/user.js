@@ -111,6 +111,30 @@ router.put("/:id",verifyToken,async (req,res) => {
 
 })
 
+//UPDATE USER PROFILE PICTURE
+
+/**
+ * route : /user/:id/profilePicture
+ * params : id
+ * method : PUT
+ * access : private
+ * desc : update user profile picture based on id
+**/
+ 
+router.put("/:id/profilePicture",verifyToken,async (req,res) => {
+    try{
+        const updatedUser = await User.findByIdAndUpdate(req.params.id,{
+            $set: req.body
+        },{new:true});
+
+        res.status(200).json(updatedUser);
+    }
+    catch(err){
+        res.status(500).json(err);
+        console.log(err);
+    }
+})
+
 //DELETE USER
 
 /**
