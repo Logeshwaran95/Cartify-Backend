@@ -65,7 +65,7 @@ router.post("/", verifyToken, async (req, res) => {
     * example : /product/search?name=apple
 */
 
-router.get("/search/:query",verifyToken,async(req,res) => {
+router.get("/search/:query",async(req,res) => {
     const qName = req.params.query;
     try{
         const products = await Product.find({
