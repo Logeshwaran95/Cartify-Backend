@@ -27,7 +27,7 @@ npm run test
 
 👤 **Logeshwaran S**
 
-* Website: http://logeshwaran-portfolio-logeshwaran95.vercel.app/
+* Website: [logeshwaran.vercel.app](https://logeshwaran.vercel.app/)
 * Twitter: [@Logeshwaran395](https://twitter.com/Logeshwaran395)
 * Github: [@Logeshwaran95](https://github.com/Logeshwaran95)
 * LinkedIn: [@logeshwaran-](https://linkedin.com/in/logeshwaran-)
@@ -35,6 +35,3 @@ npm run test
 ## Show your support
 
 Give a ⭐️ if this project helped you!
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
